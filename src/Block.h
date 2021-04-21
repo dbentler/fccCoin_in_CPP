@@ -1,9 +1,10 @@
 #ifndef BLOCK_H 
 #define BLOCK_H
 
+#include <iostream>
+#include "SHA256.h"
 #include <string>
 #include <vector>
-#include <set>
 
 class Block{
     private:
