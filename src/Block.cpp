@@ -18,6 +18,6 @@ std::string Block::calculateHash(){
 }
 
 void Block::viewBlock(){
-    printf("{\n Block Index: %d \n Block Poof: %d \n Previous Hash: %s \n Block Time Stamp: %f \n}", blockIndex, blockProofNum,
+    printf("{\n Block Index: %d \n Block Proof: %d \n Previous Hash: %s \n Block Time Stamp: %f \n}", blockIndex, blockProofNum,
     blockPrevHash.c_str(), blockTimeStamp);
 }
