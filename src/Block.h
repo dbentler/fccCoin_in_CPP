@@ -28,6 +28,8 @@ class Block{
         int checkIndex();
         double checkTimeStamp();
         std::string checkHash();
+
+        int getProofNum();
 };
 
 std::ostream& operator <<(std::ostream& os, const Block& block);

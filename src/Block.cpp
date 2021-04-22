@@ -60,6 +60,10 @@ std::string Block::checkHash(){
     return blockPrevHash;
 }
 
+int Block::getProofNum(){
+    return blockProofNum;
+}
+
 std::ostream& operator <<(std::ostream& os, const Block& block){
     os << "{" << std::endl;
     os << "Block Index: " << block.blockIndex << std::endl;

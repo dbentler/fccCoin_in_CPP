@@ -26,7 +26,10 @@ class BlockChain{
         bool newData(const std::string& Sender, const std::string& Receiver, const std::string& Amount);
 
         // Protects blockchain from attack
-        static bool constructProofOfWork();
+        int proofOfWork(const int& lastProof);
+
+        bool verifyProof(const int& lastProof, const int& proofNum);
+
 
         //Returns last block in the chain
         Block lastBlock();
