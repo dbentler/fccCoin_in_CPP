@@ -47,6 +47,7 @@ bool BlockChain::verifyProof(const int& lastProof, const int& proofNum){
     // Upon looking at SHA256.h,  I believe the sha256() function already encodes a string to UTF-8 before returning the hash (Line 40-45, SHA256.h).
     // If I'm right, then this should work fine. If I'm wrong, then I'll need go back and edit Block::calculateHash()
     std::string guessHash = sha256(guess);
+    std::cout << guessHash << std::endl;
     if(guessHash.substr(0, 4) == "0000"){
         return true;
     }
