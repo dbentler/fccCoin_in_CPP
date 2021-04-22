@@ -16,3 +16,9 @@ So not only am I learning more about C++, I guess I'm also learning more about P
 
 ## This code is unfinished.
 I did say part of this project was also to practice Git. Can't really do that if I only upload the finished product. Come view my mistakes and how I later correct them down the line! 
+
+## Update 22 April, 2021 - IT WORKS
+Finally, after two days of nonstop coding, I've successfully recreated the output of the original article (I took liberties with the Block format of course):
+![I was ecstatic when the correct hash was found.](https://i.imgur.com/2ZW3VtC.png)
+
+Now I need to go back and investigate my implementation of CTime, as well as a better indication that the mining is taking place instead of just throwing an insane amount of hashes at the screen before coming to an abrupt stop.
