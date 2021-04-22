@@ -34,7 +34,9 @@ class BlockChain{
         //Returns last block in the chain
         Block lastBlock();
 
-        void viewChainTest();
+        void viewLastBlock();
+
+        void viewChain();
 };
 
 #endif
