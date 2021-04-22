@@ -48,5 +48,4 @@ Block BlockChain::lastBlock(){
 
 void BlockChain::viewChainTest(){
     lastBlock().viewBlock(); // Sole purpose is to check to see if the genesis block was created correctly.
-    std::cout << "Genesis created successfully!" << std::endl;
 }

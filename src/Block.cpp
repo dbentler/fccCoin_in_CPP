@@ -37,7 +37,11 @@ void Block::viewBlock(){
    std::cout << "Previous Hash: " << blockPrevHash << std::endl;
    std::cout << "Block Data: ";
    for(auto i : blockData){
-       std::cout << i << ",";
+       if(i != blockData.back()){
+            std::cout << i << ", ";
+       } else {
+           std::cout << i;
+       }
    }
    std::cout << "\nBlock Time Stamp: " << blockTimeStamp << std::endl;
    std::cout << "}" << std::endl;
