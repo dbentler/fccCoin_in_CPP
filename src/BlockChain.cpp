@@ -46,4 +46,7 @@ Block BlockChain::lastBlock(){
     return chain.back(); // This returns a reference of the last Block Object
 }
 
-void BlockChain::viewChain(){}
+void BlockChain::viewChainTest(){
+    lastBlock().viewBlock(); // Sole purpose is to check to see if the genesis block was created correctly.
+    std::cout << "Genesis created successfully!" << std::endl;
+}
