@@ -3,7 +3,6 @@
 
 #include "Block.h"
 
-#
 
 class BlockChain{
     private:
