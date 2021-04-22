@@ -1,11 +1,11 @@
 #include "Block.h"
 
-Block::Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector<std::string>& data, const double& timeStamp){
+Block::Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector<std::string>& data){
     blockIndex = index;
     blockProofNum = proofNum;
     blockPrevHash = prevHash;
     blockData = data;
-    blockTimeStamp = timeStamp;
+    blockTimeStamp = currentDateTime();
 }
 
 Block::~Block(){};
@@ -20,17 +20,12 @@ std::string Block::calculateHash(){
         dataString += i;
     }
 
-    blockAsString += (dataString + std::to_string(blockTimeStamp));
+    blockAsString += (dataString + blockTimeStamp);
 
     return sha256(blockAsString);
 }
 
 void Block::viewBlock(){
-    /*
-    printf("\n{\n Block Index: %d \n Block Proof: %d \n Previous Hash: %s \n Block Time Stamp: %f \n} \n", blockIndex, blockProofNum,
-    blockPrevHash.c_str(), blockTimeStamp);
-    */
-   // Hacky formatting with COUT, I know
    std::cout << "{" << std::endl;
    std::cout << "Block Index: " << blockIndex << std::endl;
    std::cout << "Block Proof: " << blockProofNum << std::endl;
@@ -52,7 +47,7 @@ int Block::checkIndex(){
     return blockIndex;
 }
 
-double Block::checkTimeStamp(){
+std::string Block::checkTimeStamp(){
     return blockTimeStamp;
 }
 
@@ -80,4 +75,17 @@ std::ostream& operator <<(std::ostream& os, const Block& block){
    os << "\nBlock Time Stamp: " << block.blockTimeStamp << std::endl;
    os << "}" << std::endl;
    return os;
+}
+
+// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
+const std::string currentDateTime() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+    // for more information about date/time format
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+    return buf;
 }

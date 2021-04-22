@@ -9,16 +9,24 @@ void BlockChain::constructGenesis(){
 }
 
 Block BlockChain::constructBlock(const int& proofNum, const std::string& prevHash){
-    time_t currentTime = time(0);
-    double timeStamp = static_cast<double>(currentTime);
     
-    Block block(chain.size(), proofNum, prevHash, currentData, timeStamp);
+    Block block(chain.size(), proofNum, prevHash, currentData);
 
     currentData.clear(); // Clears transaction data for new blocks.
 
-    chain.push_back(block);
-
-    return block;
+    if (block.checkIndex() == 0){
+        chain.push_back(block);
+        return block;
+    }
+    if (block.checkIndex() != 0){
+        if (checkValidity(block)){
+            chain.push_back(block);
+            return block;
+        } else {
+            std::cout << "Block Rejected: invalid block!" << std::endl;
+            return block;
+        }
+    }
 }
 
 bool BlockChain::checkValidity(Block& newBlock){
@@ -27,8 +35,6 @@ bool BlockChain::checkValidity(Block& newBlock){
     } else if (newBlock.checkHash() != lastBlock().calculateHash()){
         return false;
     } else if (!(verifyProof(newBlock.getProofNum(), lastBlock().getProofNum()))){
-        return false;
-    } else if (newBlock.checkTimeStamp() <= lastBlock().checkTimeStamp()){
         return false;
     } else {
         return true;

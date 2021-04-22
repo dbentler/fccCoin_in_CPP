@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "SHA256.h"
+#include <time.h>
 #include <string>
 #include <vector>
 
@@ -12,10 +13,10 @@ class Block{
         int blockProofNum;
         std::string blockPrevHash;
         std::vector<std::string> blockData;
-        double blockTimeStamp;
+        std::string blockTimeStamp;
         
     public:
-        Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector<std::string>& data, const double& timeStamp);
+        Block(const int& index, const int& proofNum, const std::string& prevHash, const std::vector<std::string>& data);
 
         ~Block();
 
@@ -25,13 +26,18 @@ class Block{
 
         friend std::ostream& operator <<(std::ostream& os, const Block& block);
 
-        int checkIndex();
-        double checkTimeStamp();
-        std::string checkHash();
+        //Time
+        friend const std::string currentDateTime();
 
+        //Helper functions to access private block variables.
+        int checkIndex();
+        std::string checkTimeStamp();
+        std::string checkHash();
         int getProofNum();
 };
 
 std::ostream& operator <<(std::ostream& os, const Block& block);
+
+const std::string currentDateTime();
 
 #endif
