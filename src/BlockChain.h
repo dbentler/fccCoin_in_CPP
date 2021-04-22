@@ -2,7 +2,7 @@
 #define BLOCKCHAIN_H
 
 #include "Block.h"
-
+#include <ctime>
 
 class BlockChain{
     private:
@@ -14,7 +14,7 @@ class BlockChain{
         BlockChain();
         
         //Constructs Initial Block
-        Block constructGenesis();
+        void constructGenesis();
 
         //Constructs and adds new block to chain.
         Block constructBlock(const int& proofNum, const std::string& prevHash);
@@ -23,13 +23,15 @@ class BlockChain{
         bool checkValidity(Block& newBlock);
 
         //Adds a new transaction to the data of the transaction
-        void newData();
+        bool newData(const std::string& Sender, const std::string& Receiver, const std::string& Amount);
 
         // Protects blockchain from attack
         static bool constructProofOfWork();
 
         //Returns last block in the chain
         Block lastBlock();
+
+        void viewChain();
 };
 
 #endif
