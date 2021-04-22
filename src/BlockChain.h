@@ -3,7 +3,14 @@
 
 #include "Block.h"
 
+#
+
 class BlockChain{
+    private:
+    std::vector<Block> chain; // Keeps all blocks. Maybe a vector isn't the best for this?
+    std::vector<std::string> currentData; // Keeps all completed transactions in the block.
+
+
     public:
         BlockChain();
         
@@ -14,7 +21,7 @@ class BlockChain{
         Block constructBlock(const int& proofNum, const std::string& prevHash);
 
         //Checks whether or not the Blockchain is valid
-        static void checkValidity();
+        bool checkValidity(Block& newBlock);
 
         //Adds a new transaction to the data of the transaction
         void newData();

@@ -43,3 +43,15 @@ void Block::viewBlock(){
    std::cout << "}" << std::endl;
 
 }
+
+int Block::checkIndex(){
+    return blockIndex;
+}
+
+double Block::checkTimeStamp(){
+    return blockTimeStamp;
+}
+
+std::string Block::checkHash(){
+    return blockPrevHash;
+}

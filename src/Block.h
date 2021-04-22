@@ -22,6 +22,10 @@ class Block{
         std::string calculateHash();
 
         void viewBlock();
+
+        int checkIndex();
+        double checkTimeStamp();
+        std::string checkHash();
 };
 
 #endif
