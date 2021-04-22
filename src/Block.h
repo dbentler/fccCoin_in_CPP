@@ -21,11 +21,15 @@ class Block{
 
         std::string calculateHash();
 
-        void viewBlock();
+        void viewBlock(); // Deprecated method
+
+        friend std::ostream& operator <<(std::ostream& os, const Block& block);
 
         int checkIndex();
         double checkTimeStamp();
         std::string checkHash();
 };
+
+std::ostream& operator <<(std::ostream& os, const Block& block);
 
 #endif

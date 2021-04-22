@@ -45,7 +45,7 @@ void Block::viewBlock(){
    }
    std::cout << "\nBlock Time Stamp: " << blockTimeStamp << std::endl;
    std::cout << "}" << std::endl;
-
+   std::cout << "This block was outputted with a deprecated method!" << std::endl;
 }
 
 int Block::checkIndex(){
@@ -58,4 +58,22 @@ double Block::checkTimeStamp(){
 
 std::string Block::checkHash(){
     return blockPrevHash;
+}
+
+std::ostream& operator <<(std::ostream& os, const Block& block){
+    os << "{" << std::endl;
+    os << "Block Index: " << block.blockIndex << std::endl;
+    os << "Block Proof: " << block.blockProofNum << std::endl;
+    os << "Previous Hash: " << block.blockPrevHash << std::endl;
+    os << "Block Data: ";
+    for(auto i : block.blockData){
+       if(i != block.blockData.back()){
+            os << i << ", ";
+        } else {
+            os << i;
+        }
+   }
+   os << "\nBlock Time Stamp: " << block.blockTimeStamp << std::endl;
+   os << "}" << std::endl;
+   return os;
 }

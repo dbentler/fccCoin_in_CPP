@@ -47,5 +47,5 @@ Block BlockChain::lastBlock(){
 }
 
 void BlockChain::viewChainTest(){
-    lastBlock().viewBlock(); // Sole purpose is to check to see if the genesis block was created correctly.
+    std::cout << lastBlock(); // Sole purpose is to check to see if the genesis block was created correctly.
 }

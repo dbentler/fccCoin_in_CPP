@@ -9,4 +9,6 @@ int main(){
    std::string lastHash = blockchain.lastBlock().calculateHash(); 
    Block block = blockchain.constructBlock(1, lastHash);
    blockchain.viewChainTest();
+
+   std::cout << block << std::endl;
 }
