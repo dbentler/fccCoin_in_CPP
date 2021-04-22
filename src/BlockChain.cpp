@@ -44,11 +44,10 @@ bool BlockChain::newData(const std::string& Sender, const std::string& Receiver,
 
 bool BlockChain::verifyProof(const int& lastProof, const int& proofNum){
     std::string guess = std::to_string(lastProof) + std::to_string(proofNum);
-    // Upon looking at SHA256.h,  I believe the sha256() function already encodes a string to UTF-8 before returning the hash (Line 40-45, SHA256.h).
-    // If I'm right, then this should work fine. If I'm wrong, then I'll need go back and edit Block::calculateHash()
     std::string guessHash = sha256(guess);
-    std::cout << guessHash << std::endl;
-    if(guessHash.substr(0, 4) == "0000"){
+    std::cout << "# Trying: " << guess << std::endl;
+    if(guessHash.substr(0, 4) == "0000"){ // You can change the difficulty by adding or removing 0's (and updating substr). More 0's means higher difficulty.
+        std::cout << "# FOUND: " << guessHash << std::endl;
         return true;
     }
     return false;
