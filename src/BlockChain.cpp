@@ -45,7 +45,7 @@ bool BlockChain::newData(const std::string& Sender, const std::string& Receiver,
 bool BlockChain::verifyProof(const int& lastProof, const int& proofNum){
     std::string guess = std::to_string(lastProof) + std::to_string(proofNum);
     std::string guessHash = sha256(guess);
-    std::cout << "# Trying: " << guess << std::endl;
+    std::cout << "# Trying: " << guess << " | Proof: "<< proofNum << std::endl;
     if(guessHash.substr(0, 4) == "0000"){ // You can change the difficulty by adding or removing 0's (and updating substr). More 0's means higher difficulty.
         std::cout << "# FOUND: " << guessHash << std::endl;
         return true;
@@ -56,7 +56,7 @@ bool BlockChain::verifyProof(const int& lastProof, const int& proofNum){
 int BlockChain::proofOfWork(const int& lastProof){
     int proofNum = 0;
     while(verifyProof(proofNum, lastProof) == false){
-        proofNum++;
+        ++proofNum;
     }
     return proofNum;
 }
